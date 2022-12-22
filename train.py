@@ -8,6 +8,18 @@ from transformers import default_data_collator
 from transformers import Seq2SeqTrainer, Seq2SeqTrainingArguments
 from datasets import load_metric
 
+def compute_metrics(pred):
+    labels_ids = pred.label_ids
+    pred_ids = pred.predictions
+
+    pred_str = tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
+    labels_ids[labels_ids == -100] = tokenizer.tokenizer.pad_token_id
+    label_str = tokenizer.batch_decode(labels_ids, skip_special_tokens=True)
+
+    cer = cer_metric.compute(predictions=pred_str, references=label_str)
+
+    return {"cer": cer}
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='trocr fine-tune訓練')
@@ -58,19 +70,7 @@ if __name__ == '__main__':
     model.config.length_penalty = 2.0
     model.config.num_beams = 4
 
-    cer_metric = load_metric('cer')
-
-    def compute_metrics(pred):
-        labels_ids = pred.label_ids
-        pred_ids = pred.predictions
-
-        pred_str = tokenizer.batch_decode(pred_ids, skip_special_tokens=True)
-        labels_ids[labels_ids == -100] = tokenizer.tokenizer.pad_token_id
-        label_str = tokenizer.batch_decode(labels_ids, skip_special_tokens=True)
-
-        cer = cer_metric.compute(predictions=pred_str, references=label_str)
-
-        return {"cer": cer}
+    cer_metric = load_metric("cer")
 
     training_args = Seq2SeqTrainingArguments(
         predict_with_generate=True,
@@ -91,7 +91,7 @@ if __name__ == '__main__':
         model=model,
         tokenizer=tokenizer.image_processor,
         args=training_args,
-        compute_metrics=cer_metric,
+        compute_metrics=compute_metrics,
         train_dataset=train_dataset,
         eval_dataset=eval_dataset,
         data_collator=default_data_collator,

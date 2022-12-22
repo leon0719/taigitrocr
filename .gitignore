@@ -4,5 +4,6 @@ IAM
 checkpoint
 TrOCRProcessor
 VisionEncoderDecoderModel
+trdg/fonts
 ocr/
 test_data
