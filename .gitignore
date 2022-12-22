@@ -5,3 +5,4 @@ checkpoint
 TrOCRProcessor
 VisionEncoderDecoderModel
 ocr/
+*.ipynb
