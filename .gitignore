@@ -1,0 +1,9 @@
+__pycache__
+tools/train_data
+IAM
+checkpoint
+TrOCRProcessor
+VisionEncoderDecoderModel
+ocr/
+trdg/
+test_data
