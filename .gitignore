@@ -5,5 +5,4 @@ checkpoint
 TrOCRProcessor
 VisionEncoderDecoderModel
 ocr/
-trdg/
 test_data
