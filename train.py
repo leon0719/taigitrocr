@@ -30,7 +30,7 @@ if __name__ == '__main__':
     parser.add_argument('--train_label_text_path', default='tools/train_data/train_label.txt', type=str, help="訓練標籤位置")
     parser.add_argument('--valid_label_text_path', default='tools/train_data/valid_label.txt', type=str, help="驗證標籤位置")
     parser.add_argument('--per_device_train_batch_size', default=16, type=int, help="train batch size")
-    parser.add_argument('--per_device_eval_batch_size', default=16, type=int, help="eval batch size")
+    parser.add_argument('--per_device_eval_batch_size', default=8, type=int, help="eval batch size")
     parser.add_argument('--max_target_length', default=128, type=int, help="訓練文字字符數")
 
     parser.add_argument('--num_train_epochs', default=10, type=int, help="訓練epoch數")
