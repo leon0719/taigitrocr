@@ -16,9 +16,9 @@ if __name__ == '__main__':
     parser.add_argument('--train_label_text_path', default='test_data/en/gt_test.txt', type=str, help="訓練標籤位置")
 
     args = parser.parse_args()
-    # device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    device = torch.device("cpu")
-    tokenizer = TrOCRProcessor.from_pretrained('TrOCRProcessor/trocr-base-handwritten')
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    #device = torch.device("cpu")
+    tokenizer = TrOCRProcessor.from_pretrained(args.model_path)
 
 
 
