@@ -4,9 +4,9 @@ import shutil
 from tqdm import tqdm
 from utiils import *
 
-text_gerner = '/home/leon/trocr/trdg'
+text_gerner = '/home/leon/taigitrocr/trdg'
 # 設定訓練資料圖片保存的資料夾的"絕對路徑"
-save_img_path = '/home/leon/trocr/tools'
+save_img_path = '/home/leon/taigitrocr/tools'
 
 # --------------------------------------------------
 train_data_path = os.path.join(save_img_path, 'train_data')
