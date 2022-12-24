@@ -1,7 +1,7 @@
 import os
 import argparse
 import pandas as pd
-from dataset import trocrDataset, decode_text
+from dataset import trocrDataset
 from transformers import TrOCRProcessor
 from transformers import VisionEncoderDecoderModel
 from transformers import default_data_collator
@@ -29,7 +29,7 @@ if __name__ == '__main__':
     parser.add_argument('--dataset_path', default='tools/train_data/image', type=str, help="數據集位置")
     parser.add_argument('--train_label_text_path', default='tools/train_data/train_label.txt', type=str, help="訓練標籤位置")
     parser.add_argument('--valid_label_text_path', default='tools/train_data/valid_label.txt', type=str, help="驗證標籤位置")
-    parser.add_argument('--per_device_train_batch_size', default=16, type=int, help="train batch size")
+    parser.add_argument('--per_device_train_batch_size', default=8, type=int, help="train batch size")
     parser.add_argument('--per_device_eval_batch_size', default=8, type=int, help="eval batch size")
     parser.add_argument('--max_target_length', default=128, type=int, help="訓練文字字符數")
 

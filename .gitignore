@@ -6,4 +6,4 @@ TrOCRProcessor
 VisionEncoderDecoderModel
 ocr/
 *.ipynb
-log/train.log
+log
