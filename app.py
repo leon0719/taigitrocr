@@ -22,14 +22,15 @@ if __name__ == '__main__':
 
 
 
-    test_df = pd.read_csv(args.train_label_text_path,sep='\t',header=None)
+    test_df = pd.read_csv(args.train_label_text_path,sep='.jpg',header=None)
+    test_df[0] =test_df[0]+'.jpg'
 
     test_dataset = trocrDataset(root_dir=args.test_img,
                             df=test_df,
                             Tokenizer=tokenizer)
 
 
-    test_dataloader = DataLoader(test_dataset, batch_size=8)
+    test_dataloader = DataLoader(test_dataset, batch_size=16)
 
     batch = next(iter(test_dataloader))
 
@@ -38,6 +39,7 @@ if __name__ == '__main__':
 
     total_preds = []
     total_labels = []
+
     for batch in tqdm(test_dataloader):
 
         pixel_values = batch["pixel_values"].to(device)
@@ -56,10 +58,11 @@ if __name__ == '__main__':
                 f.write(word+' ')
             f.write('\n')
 
+
     with open('pred.txt','w') as f:
         for line in total_preds:
             for word in line:
                 f.write(word+' ')
             f.write('\n')
     os.system('wer -c gt.txt pred.txt > cer.txt')
-    os.system('rm -rf gt.txt pred.txt')
+    # os.system('rm -rf gt.txt pred.txt')

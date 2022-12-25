@@ -6,7 +6,7 @@ from utiils import *
 
 text_gerner = '/home/leon/trocr/trdg'
 # 設定訓練資料圖片保存的資料夾的"絕對路徑"
-save_img_path = '/home/leon/trocr/tools'
+save_img_path = '/nfs/TS-1635AX/WorkSpace/leon/GPU5'
 
 # --------------------------------------------------
 train_data_path = os.path.join(save_img_path, 'train_data')
