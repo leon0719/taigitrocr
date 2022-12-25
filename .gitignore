@@ -8,4 +8,4 @@ ocr/
 *.ipynb
 log/train.log
 .vscode
-cer.txt
+cer*.txt
