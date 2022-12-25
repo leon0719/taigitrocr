@@ -34,8 +34,8 @@ if __name__ == '__main__':
     parser.add_argument('--max_target_length', default=128, type=int, help="訓練文字字符數")
 
     parser.add_argument('--num_train_epochs', default=5, type=int, help="訓練epoch數")
-    parser.add_argument('--eval_steps', default=1000, type=int, help="模型評估間隔數")
-    parser.add_argument('--save_steps', default=1000, type=int, help="模型保存間隔步數")
+    parser.add_argument('--eval_steps', default=2000, type=int, help="模型評估間隔數")
+    parser.add_argument('--save_steps', default=2000, type=int, help="模型保存間隔步數")
 
 
     args = parser.parse_args()
@@ -48,7 +48,7 @@ if __name__ == '__main__':
     print("train num:", len(train_df), "test num:", len(test_df))
 
     #圖像預處理
-    tokenizer = TrOCRProcessor.from_pretrained("TrOCRProcessor/trocr-base-handwritten")
+    tokenizer = TrOCRProcessor.from_pretrained("microsoft/trocr-base-stage1")
     vocab = tokenizer.tokenizer.get_vocab()
     vocab_inp = {vocab[key]: key for key in vocab}
 
@@ -59,12 +59,12 @@ if __name__ == '__main__':
 
 
 
-    model = VisionEncoderDecoderModel.from_pretrained("VisionEncoderDecoderModel/trocr-base-stage1")
+    model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-stage1")
     model.config.decoder_start_token_id = tokenizer.tokenizer.cls_token_id
     model.config.pad_token_id = tokenizer.tokenizer.pad_token_id
     model.config.vocab_size = model.config.decoder.vocab_size
     model.config.eos_token_id = tokenizer.tokenizer.sep_token_id
-    model.config.max_length = 128
+    model.config.max_length = 256
     model.config.early_stopping = True
     model.config.no_repeat_ngram_size = 3
     model.config.length_penalty = 2.0
