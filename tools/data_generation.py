@@ -24,7 +24,7 @@ def Gerner_en_img():
     print('生成en_img_data')
     os.system(
         f'python run.py  \
-            -c 10000 \
+            -c 200000 \
             -d 3 \
             -f 48 \
             -i dicts/en/en_article.txt \
@@ -35,7 +35,7 @@ def Gerner_en_img():
     # -----------------------------------------------------------
     os.system(
         f'python run.py  \
-            -c 10000 \
+            -c 100000 \
             -d 3 \
             -f 48 \
             -i dicts/en/en_article2.txt \
@@ -46,7 +46,7 @@ def Gerner_en_img():
     # -----------------------------------------------------------
     os.system(
         f'python run.py  \
-            -c 10000 \
+            -c 100000 \
             -f 48 \
             -i dicts/en/en_article3.txt \
             -fd fonts/en/ \
@@ -56,7 +56,7 @@ def Gerner_en_img():
     # -----------------------------------------------------------
     os.system(
         f'python run.py  \
-            -c 10000 \
+            -c 100000 \
             -f 48 \
             -i dicts/en/en_article4.txt \
             -fd fonts/en/ \

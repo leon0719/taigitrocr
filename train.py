@@ -26,9 +26,9 @@ if __name__ == '__main__':
     # parser.add_argument('--cust_data_init_weights_path', default='./weights', type=str,
     #                     help="初始化訓練權重，用於自己數據集上fine-tune權重")
     parser.add_argument('--checkpoint_path', default='./checkpoint/trocr', type=str, help="訓練模型保存地址")
-    parser.add_argument('--dataset_path', default='tools/train_data/image', type=str, help="數據集位置")
-    parser.add_argument('--train_label_text_path', default='tools/train_data/train_label.txt', type=str, help="訓練標籤位置")
-    parser.add_argument('--valid_label_text_path', default='tools/train_data/valid_label.txt', type=str, help="驗證標籤位置")
+    parser.add_argument('--dataset_path', default='/nfs/TS-1635AX/WorkSpace/leon/GPU5/train_data/image', type=str, help="數據集位置")
+    parser.add_argument('--train_label_text_path', default='/nfs/TS-1635AX/WorkSpace/leon/GPU5/train_data/train_label.txt', type=str, help="訓練標籤位置")
+    parser.add_argument('--valid_label_text_path', default='/nfs/TS-1635AX/WorkSpace/leon/GPU5/train_data/valid_label.txt', type=str, help="驗證標籤位置")
     parser.add_argument('--per_device_train_batch_size', default=16, type=int, help="train batch size")
     parser.add_argument('--per_device_eval_batch_size', default=8, type=int, help="eval batch size")
     parser.add_argument('--max_target_length', default=128, type=int, help="訓練文字字符數")
