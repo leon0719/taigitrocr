@@ -12,3 +12,4 @@ datasets
 torch
 torchvision
 torchaudio
+asr-evaluation
