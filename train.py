@@ -34,8 +34,8 @@ if __name__ == '__main__':
     parser.add_argument('--max_target_length', default=128, type=int, help="訓練文字字符數")
 
     parser.add_argument('--num_train_epochs', default=5, type=int, help="訓練epoch數")
-    parser.add_argument('--eval_steps', default=2000, type=int, help="模型評估間隔數")
-    parser.add_argument('--save_steps', default=2000, type=int, help="模型保存間隔步數")
+    parser.add_argument('--eval_steps', default=10000, type=int, help="模型評估間隔數")
+    parser.add_argument('--save_steps', default=10000, type=int, help="模型保存間隔步數")
 
 
     args = parser.parse_args()
