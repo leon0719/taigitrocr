@@ -32,12 +32,12 @@ if __name__=='__main__':
 
     parser = argparse.ArgumentParser(description='trocr fine-tune訓練')
 
-    parser.add_argument('--cust_vocab', default="./dicts/test.txt", type=str, help="自定義訓練數字符集")
+    parser.add_argument('--cust_vocab', default="dicts/total_dic.txt", type=str, help="自定義訓練數字符集")
     parser.add_argument('--cust_data_init_weights_path', default='./weights', type=str,
                         help="初始化訓練權重，用於自己數據集上fine-tune權重")
     args = parser.parse_args()
 
-    processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-handwritten")
+    processor = TrOCRProcessor.from_pretrained("microsoft/trocr-base-stage1")
     pre_model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-stage1")
     pre_vocab = processor.tokenizer.get_vocab()
     cust_vocab = read_vocab(args.cust_vocab)
