@@ -22,7 +22,7 @@ if __name__ == '__main__':
 
 
 
-    test_df = pd.read_csv(args.train_label_text_path,sep='.jpg',header=None)
+    test_df = pd.read_csv(args.train_label_text_path,sep='.jpg',header=None,engine='python')
     test_df[0] =test_df[0]+'.jpg'
 
     test_dataset = trocrDataset(root_dir=args.test_img,

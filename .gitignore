@@ -1,7 +1,7 @@
 __pycache__
 tools/train_data
 IAM
-checkpoint
+checkpoint*
 TrOCRProcessor
 VisionEncoderDecoderModel
 ocr/
