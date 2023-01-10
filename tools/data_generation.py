@@ -386,6 +386,7 @@ def Gerner_HAN_LO_img():
                     os.path.join(train_path, file))
 
     os.rmdir(data_HAN_LO_path)
+
 def Rename_ImageName():
     train_label =load_dict(os.path.join(train_data_path,'train_label.txt'))
     valid_label =load_dict(os.path.join(train_data_path,'valid_label.txt'))

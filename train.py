@@ -48,7 +48,8 @@ if __name__ == '__main__':
     print("train num:", len(train_df), "test num:", len(test_df))
 
     #圖像預處理
-    tokenizer = TrOCRProcessor.from_pretrained("microsoft/trocr-base-stage1")
+    tokenizer = TrOCRProcessor.from_pretrained("checkpointv1/trocr/last")
+    #tokenizer = TrOCRProcessor.from_pretrained("microsoft/trocr-base-stage1")
     vocab = tokenizer.tokenizer.get_vocab()
     vocab_inp = {vocab[key]: key for key in vocab}
 
@@ -59,7 +60,8 @@ if __name__ == '__main__':
 
 
 
-    model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-stage1")
+    model = VisionEncoderDecoderModel.from_pretrained("checkpointv1/trocr/last")
+    #model = VisionEncoderDecoderModel.from_pretrained("microsoft/trocr-base-stage1")
     model.config.decoder_start_token_id = tokenizer.tokenizer.cls_token_id
     model.config.pad_token_id = tokenizer.tokenizer.pad_token_id
     model.config.vocab_size = model.config.decoder.vocab_size
