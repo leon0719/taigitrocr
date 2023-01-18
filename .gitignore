@@ -9,3 +9,5 @@ ocr/
 log
 cer*.txt
 weights
+test*.py
+.vscode
