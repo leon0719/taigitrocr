@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 from PIL import Image
 
-def train_img_label(save_txt_path:str,train_list:List,valid_list:List) -> None:
+def train_img_label(save_txt_path:str ,train_list : List ,valid_list : List) -> None:
     with open(os.path.join(save_txt_path,'train_label.txt'),'a') as f:
         for line in train_list :
             f.write(line +'\t'+' '.join(line.split('_')[:-1])+'\n' )
@@ -12,7 +12,7 @@ def train_img_label(save_txt_path:str,train_list:List,valid_list:List) -> None:
         for line in valid_list :
             f.write(line +'\t'+' '.join(line.split('_')[:-1])+'\n' )
 
-def load_dict(path: str) -> List[str]:
+def load_dict(path: str) -> List:
     word_dict = []
     with open(path,"r",encoding="utf8") as d:
         word_dict = [l.split('\t') for l in d.read().splitlines() if len(l) > 0]

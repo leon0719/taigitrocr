@@ -1,1 +1,1 @@
-CUDA_VISIBLE_DEVICES=0,1,2,3 nohup python train.py >& log/train.log &
+CUDA_VISIBLE_DEVICES=0,1,2,3 python test.py
