@@ -11,3 +11,5 @@ cer*.txt
 weights
 test*.py
 .vscode
+ground.txt
+predict.txt

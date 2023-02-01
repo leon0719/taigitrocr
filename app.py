@@ -52,6 +52,14 @@ if __name__ == '__main__':
         labels = tokenizer.batch_decode(labels, skip_special_tokens=True)
         total_labels.extend(labels)
 
+    with open('ground.txt','w') as f:
+        for line in total_labels:
+            f.write(line+'\n')
+
+    with open('predict.txt','w') as f:
+        for line in total_preds:
+            f.write(line+'\n')
+
     with open('gt.txt','w') as f:
         for line in total_labels:
             for word in line:
@@ -65,4 +73,4 @@ if __name__ == '__main__':
                 f.write(word+' ')
             f.write('\n')
     os.system('wer -c gt.txt pred.txt > cer.txt')
-    # os.system('rm -rf gt.txt pred.txt')
+    os.system('rm -rf gt.txt pred.txt')
