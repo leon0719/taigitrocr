@@ -4,10 +4,10 @@ from torch.utils.data import Dataset
 import torch
 
 class trocrDataset(Dataset):
-    def __init__(self, root_dir,df ,Tokenizer, max_target_length=256):
+    def __init__(self, root_dir,df ,processor, max_target_length=256):
         self.root_dir = root_dir
         self.df = df
-        self.Tokenizer = Tokenizer
+        self.processor = processor
         self.max_target_length = max_target_length
     def __len__(self):
         return len(self.df)
@@ -21,14 +21,14 @@ class trocrDataset(Dataset):
                 file_name = file_name + 'g'
 
             image = Image.open(os.path.join(self.root_dir,file_name)).convert("RGB")
-            pixel_values = self.Tokenizer(image, return_tensors="pt").pixel_values
+            pixel_values = self.processor(image, return_tensors="pt").pixel_values
 
-            labels = self.Tokenizer.tokenizer(text,
+            labels = self.processor.tokenizer(text,
                                               padding="max_length",
                                               truncation=True,
                                               max_length=self.max_target_length).input_ids
 
-            labels = [label if label != self.Tokenizer.tokenizer.pad_token_id else -100 for label in labels]
+            labels = [label if label != self.processor.tokenizer.pad_token_id else -100 for label in labels]
 
             encoding = {"pixel_values": pixel_values.squeeze(), "labels": torch.tensor(labels)}
             return encoding

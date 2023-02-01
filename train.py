@@ -1,7 +1,7 @@
 import os
 import argparse
 import pandas as pd
-from test_dataset import trocrDataset
+from dataset import trocrDataset
 from datasets import load_metric
 from transformers import (
     TrOCRProcessor,
