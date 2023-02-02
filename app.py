@@ -20,14 +20,12 @@ if __name__ == '__main__':
     #device = torch.device("cpu")
     tokenizer = TrOCRProcessor.from_pretrained(args.model_path)
 
-
-
     test_df = pd.read_csv(args.train_label_text_path,sep='.jpg',header=None,engine='python')
     test_df[0] =test_df[0]+'.jpg'
 
     test_dataset = trocrDataset(root_dir=args.test_img,
                             df=test_df,
-                            Tokenizer=tokenizer)
+                            processor=tokenizer)
 
 
     test_dataloader = DataLoader(test_dataset, batch_size=16)
