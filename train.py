@@ -60,10 +60,10 @@ if __name__ == '__main__':
     decoder = TrOCRForCausalLM(decoder_config)
     model = VisionEncoderDecoderModel(encoder=encoder, decoder=decoder)
 
-    # Check outputs on an image
+    # 圖像預處理
     feature_extractor = ViTFeatureExtractor(size=encoder_config.image_size)
-
-    tokenizer = AutoTokenizer.from_pretrained('bert-base-uncased')
+    # 下載bert pre-trained model
+    tokenizer = AutoTokenizer.from_pretrained('bert-base-chinese')
     processor = TrOCRProcessor(feature_extractor, tokenizer)
     train_dataset = trocrDataset(root_dir=args.dataset_path,df=train_df ,processor=processor, max_target_length=args.max_target_length)
     eval_dataset = trocrDataset(root_dir=args.dataset_path,df=test_df ,processor=processor, max_target_length=args.max_target_length)
@@ -96,7 +96,6 @@ if __name__ == '__main__':
         eval_steps=args.eval_steps,
         save_total_limit=5
     )
-
     # seq2seq trainer
     trainer = Seq2SeqTrainer(
         model=model,
