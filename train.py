@@ -37,7 +37,7 @@ if __name__ == '__main__':
     parser.add_argument('--per_device_train_batch_size', default=12, type=int, help="train batch size")
     parser.add_argument('--per_device_eval_batch_size', default=8, type=int, help="eval batch size")
     parser.add_argument('--max_target_length', default=256, type=int, help="訓練文字字符數")
-    parser.add_argument('--num_train_epochs', default=10, type=int, help="訓練epoch數")
+    parser.add_argument('--num_train_epochs', default=25, type=int, help="訓練epoch數")
     parser.add_argument('--eval_steps', default=20000, type=int, help="模型評估間隔數")
     parser.add_argument('--save_steps', default=20000, type=int, help="模型保存間隔步數")
 
@@ -90,7 +90,7 @@ if __name__ == '__main__':
         per_device_eval_batch_size=args.per_device_eval_batch_size,
         fp16=True,
         output_dir=args.checkpoint_path,
-        logging_steps=10,
+        logging_steps=25,
         num_train_epochs=args.num_train_epochs,
         save_steps=args.save_steps,
         eval_steps=args.eval_steps,
