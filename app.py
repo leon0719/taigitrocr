@@ -10,7 +10,7 @@ import os
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='trocr fine-tune訓練')
-    parser.add_argument('--model_path', default='./checkpoint/trocr/last', type=str,
+    parser.add_argument('--model_path', default='./checkpoint1/trocr/last', type=str,
                         help="訓練好的模型路徑")
     parser.add_argument('--test_img', default='test_data/en/en_img', type=str, help="img path")
     parser.add_argument('--train_label_text_path', default='test_data/en/gt_test.txt', type=str, help="訓練標籤位置")
