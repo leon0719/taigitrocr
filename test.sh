@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=4 python app.py --model_path './checkpoint/trocr/checkpoint-40000'
