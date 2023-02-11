@@ -26,6 +26,7 @@ class OCRDataset(Dataset):
         # add labels (input_ids) by encoding the text
         labels = self.tokenizer(text,
                                 padding="max_length",
+                                truncation=True,
                                 max_length=self.max_target_length).input_ids
 
         # important: make sure that PAD tokens are ignored by the loss function
