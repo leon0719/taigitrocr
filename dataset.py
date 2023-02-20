@@ -18,8 +18,6 @@ class OCRDataset(Dataset):
         # get file name + text
         file_name = self.df[0][idx]
         text = self.df[1][idx]
-        if file_name.endswith('jp'):
-                file_name = file_name + 'g'
         # prepare image (i.e. resize + normalize)
         image = Image.open(os.path.join(self.dataset_dir,file_name)).convert("RGB")
         pixel_values = self.processor(image, return_tensors="pt").pixel_values
